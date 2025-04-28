@@ -14,3 +14,13 @@ Det är bra att lägga till `t.Helper()` i hjälpmetoderna, för om ett test fai
 
 ---
 
+Anm hot tip: Man kan skriva in namnet på return-variabeln på en funktion såhär `func myFunc(x int) (y int)`, och då behöver man bara ha return, inte skriva `return y`. Lite snyggare bara.
+
+Anm hot tip: Snyggare att gruppera konstaner (`const`) i ett eget block, tycker jag. 
+
+---
+
+De tre stegen för **TDD**: 
+1. Skriv ett test med tydligt syfte, den ska *ringa in* vad din funktion ska göra. Testet ska faila, men se till att den ger en tydlig beskrivning av hur testet failar. 
+2. Skriva tillräckligt för att testet ska pass:a. 
+3. Refaktorera, gör koden clean och fin. 
