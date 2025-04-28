@@ -11,3 +11,6 @@ Det är bra att refaktorera sin testkod också! Om vi har flera tester kring sam
 När man använder hjälp-funktioner i sin testkod är det bra att acceptera ett interface nämligen `testing.TB`. Detta är så att funktionen kan användas både vid test (testing.T), fuzzing (testing.F) och benchmark (testing.B).
 
 Det är bra att lägga till `t.Helper()` i hjälpmetoderna, för om ett test failar, så kommer den hålla reda på vilken metod som använde hjälpmetoden - blir ju förvirrande annars. 
+
+---
+
