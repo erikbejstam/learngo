@@ -13,4 +13,8 @@ We'll now write helper test methods on our object `Store`. This is new, but I gu
 
 ---
 
-The handler function/server/whatever that I think gets requests, must take the context from those request (which i think are automatically created by Go), and then pass those into the functions it is calling. So if the handler gets a request to get something from a db, it should take a ctx from request and then do something like `data := store.FetchFromDB(ctx, id)`. 
+The handler function/server/whatever that I think gets requests, must take the context from those request (which i think are automatically created by Go), and then pass those into the functions it is calling. So if the handler gets a request to get something from a db, it should take a ctx from request and then do something like `data := store.FetchFromDB(ctx, id)`.
+
+---
+
+NOTE: I have to redo this lesson I think, because a lot of it was pretty confusing, perhaps because I didn't really understand the http stuff. I will probably delete the code and do it again. If I want to look at the first version I did of this stuff, I'll have to go back and look at an older coommit.
