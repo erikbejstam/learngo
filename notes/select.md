@@ -18,6 +18,13 @@ I'm slightly weirded out by the syntax here. But I guess the select statement ru
 
 So if you return a channel, the select statement waits for the instance that finishes and returns a channel, and then runs that case. And when you don't care about *what is in the channel*, you can make a channel of `struct{}`, because that is the smallest data type.
 
+NOTE: Now i will try to explain the different possible cases in a select statement. 1. You "listen" for a value to come from the channel. 2. You listen for a channel being ready to receive a certain value. 3. You listen for the channel to close.
+They looks like this respectively:
+
+1. `case value := <-ch:`
+2. `case ch <- value:`
+3. `case <-ch:`
+
 --- 
 
 Next we're adding a timeout. This is very common in select statements. In fact time.After returns a channel in the same way. We add this, and then let's make it configurable so we don't have to wait so long.
