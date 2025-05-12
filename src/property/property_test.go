@@ -1,11 +1,14 @@
 package property
 
-import "testing"
+import (
+	"testing"
+	"testing/quick"
+)
 
 func TestRomanNumerals(t *testing.T) {
 	cases := []struct {
 		Description string
-		Arabic      int
+		Arabic      uint16
 		Want        string
 	}{
 		{"1 converts to I", 1, "I"},
@@ -37,7 +40,7 @@ func TestConvertToArabic(t *testing.T) {
 	cases := []struct {
 		Description string
 		Roman       string
-		Want        int
+		Want        uint16
 	}{
 		{"I converts to 1", "I", 1},
 		{"II converts to 2", "II", 2},
@@ -68,7 +71,7 @@ func TestRecursive(t *testing.T) {
 	cases := []struct {
 		Description string
 		Roman       string
-		Want        int
+		Want        uint16
 	}{
 		{"I converts to 1", "I", 1},
 		{"II converts to 2", "II", 2},
@@ -105,5 +108,23 @@ func BenchmarkRecursive(b *testing.B) {
 func BenchmarkConvertToArabic(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		ConvertToArabic("III")
+	}
+}
+
+// Property tests
+
+func TestPropertiesOfConversion(t *testing.T) {
+	assertion := func(arabic uint16) bool {
+		if arabic > 3999 {
+			t.Log("testing", arabic)
+			return true
+		}
+		roman := ConvertToRoman(arabic)
+		fromRoman := ConvertToArabic(roman)
+		return fromRoman == arabic
+	}
+
+	if err := quick.Check(assertion, nil); err != nil {
+		t.Error("failed checks", err)
 	}
 }

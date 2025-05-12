@@ -61,3 +61,18 @@ So there is some new stuff in this solution. I don't think I've every used a whi
 Next, I'm trying to implement a recursive solution to the problem. Took a little bit of thinking. But remember: work out the base case first. In this case, it is when roman only has one numeral left (len(roman) == len(numeral.Symbol)). Then you return the value. At the bottom of your function I just did `return arabic + Recursive(newRoman)`.
 
 Skrev benchmarktester for them both. Of course Recursive is slower by about four times.
+
+## Property based testing
+
+We've come to realize the *domain* of *Roman numerals* have certain rules. So far, we've only tested concrete examples (example based tests), but what if we could concretize the rules we've found, and test them against the code? So what rules have we found?
+
+- can't have more than 3 consecutive symbols
+- only I, X and C can be subtractors
+- convert and then deconverting using our functions should return us to the original number.
+
+We can write tests for these.
+
+--- 
+
+We're using `quick.Check` that takes an anon function. We realize then that a flaw in our code: it can't handle negative ints or numerals over 3999. This suggests to use that maybe `int` isn't the right type? We can print out with `t.Log` btw if we want to see what values aren't making it. Then you run the test with `go test -v` (verbose flag i guess).
+Using `unit16` gets us closer to what we want at least.

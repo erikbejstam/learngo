@@ -5,7 +5,7 @@ import (
 )
 
 type RomanNumeral struct {
-	Value  int
+	Value  uint16
 	Symbol string
 }
 
@@ -25,7 +25,7 @@ var allRomanNumerals = []RomanNumeral{
 	{1, "I"},
 }
 
-func ConvertToRoman(arabic int) string {
+func ConvertToRoman(arabic uint16) string {
 	var sb strings.Builder
 
 	for _, numeral := range allRomanNumerals {
@@ -38,8 +38,8 @@ func ConvertToRoman(arabic int) string {
 	return sb.String()
 }
 
-func ConvertToArabic(roman string) int {
-	var arabic = 0
+func ConvertToArabic(roman string) uint16 {
+	var arabic uint16
 
 	for _, numeral := range allRomanNumerals {
 		for strings.HasPrefix(roman, numeral.Symbol) {
@@ -51,8 +51,8 @@ func ConvertToArabic(roman string) int {
 	return arabic
 }
 
-func Recursive(roman string) int {
-	var arabic int
+func Recursive(roman string) uint16 {
+	var arabic uint16
 	var newRoman string
 
 	for _, numeral := range allRomanNumerals {
