@@ -76,3 +76,19 @@ We can write tests for these.
 
 We're using `quick.Check` that takes an anon function. We realize then that a flaw in our code: it can't handle negative ints or numerals over 3999. This suggests to use that maybe `int` isn't the right type? We can print out with `t.Log` btw if we want to see what values aren't making it. Then you run the test with `go test -v` (verbose flag i guess).
 Using `unit16` gets us closer to what we want at least.
+
+---
+
+## Wrapping up
+
+### TDD practice
+
+*"Did this thought of writing code that converts 1984 to MCMLXXXIV feel intimidating. It did to me too. The trick is always 'take small steps'. Not in any part of this process did we take any huge step. Always have this approach."*
+
+The skill is knowing *how* to split up work, which comes with practice, and specifically TDD practice.
+
+
+### Property based tests
+
+Excellent tool if you can figure out the rules for your domain. The functionality you need is in the stdlib. These types of tests are potentially niche though.
+
